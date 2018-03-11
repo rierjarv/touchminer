@@ -36,7 +36,7 @@
 #./raportti.sh 
 
 # poistetaan väliaikaiset tiedostot
-rm -r ${2}/tmp/
+ rm -r ${2}/tmp/
 
 #
 # kehitys
