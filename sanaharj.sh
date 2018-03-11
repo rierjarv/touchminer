@@ -9,23 +9,34 @@
 for i in s10 s20 s30 s40 s50 s100 s200 s300 s400 s500 s750 s1000 s1500 s2000 s2500 s3000 s4000 s5000 s10000 s50000
 do 
 
-  # poistetaan kirjain s hakemiston nimestä
+  # poistetaan kirjain s (itse asiassa kaikki kirjaimet hakemiston nimestä)
+  # kirjoitetaan hakemistoon "$i"/lkmtarkeet
   echo "$i" | sed 's/[a-z]//' > ${1}/"$i"/lkmtarkeet
 
-  # tärkeimmät erilaiset sanat ja vastaavat frekvenssit tiedostoon 
+  # tallennetaan muuttujaan VAR tärkeiden sanojen lukumäärä eli kansion nimi ilman s-kirjainta
   VAR=$( cat ${1}/"$i"/lkmtarkeet | awk '{print $1}') 
+
+  # tärkeimmät erilaiset sanat ja vastaavat frekvenssit tiedostoon 
+  # tmp/tmp2 sis kaikki erilaiset sanat joissa lkm edessä
+  # järjestetään numeerisesti ja käänteiseen järjestykseen
+  # kirjoitetaan frekvenssi ja sana tiedostoon "tarkeetfq"
   cat ${1}/tmp/tmp2 | sort -nr | head -n $VAR > ${1}/"$i"/tarkeetfq
 
-  # tärkeimmät erilaiset sanat tiedostoon
+  # poistetaan frekvenssiluku sanojen edestä 
+  # kirjoitetaan tärkeimmät erilaiset sanat tiedostoon "tarkeet"
   sed 's/\(.*\) \(.*\)/\2/g' ${1}/"$i"/tarkeetfq > ${1}/"$i"/tarkeet 
 
-  # kirjoitetaan tärkeiden sanojen frekvenssit tiedostoon 
+  # otetaan korkeintaan 8:n numeron kentästä kaikki frekvenssit talteen
+  # kirjoitetaan frekvenssit tiedostoon "frekvenssit" 
   egrep -o '[0-9]{1,8}' ${1}/"$i"/tarkeetfq > ${1}/"$i"/frekvenssit 
 
-  # summataan sanafrekvenssit tiedostoon
+  # summataan sanafrekvenssit rivi riviltä 
+  # kirjoitetaan kokonaisfrekvenssi tiedostoon "frekvenssi"
   awk '{s+=$1} END {print s}' ${1}/"$i"/frekvenssit > ${1}/"$i"/frekvenssi 
 
   # lasketaan lokaali sanapeittävyys 
+  # tiedosto "../data/lkmsana" sisältää kaikki esimerkkitiedoston sanat
+  # TODO selitä tarkemmin mitä sed ja awk tekevät
   cp ${1}/"$i"/frekvenssi ${1}/"$i"/tmpfrekvenssi  
   cat ${1}/data/lkmsana >> ${1}/"$i"/tmpfrekvenssi 
   tr "\n" " " < ${1}/"$i"/tmpfrekvenssi | sed 's/[ \t]*$//' > ${1}/"$i"/tmppeitto
