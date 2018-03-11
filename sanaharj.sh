@@ -3,8 +3,8 @@
 # TOUCHMINER sanaharj.sh
 # sanaharjoitukset + sanadata
 #
-# 2015/1/3
-# 1$ projektinimi
+# 2018/3/11
+# $1 projektinimi
 
 for i in s10 s20 s30 s40 s50 s100 s200 s300 s400 s500 s750 s1000 s1500 s2000 s2500 s3000 s4000 s5000 s10000 s50000
 do 
