@@ -22,21 +22,24 @@ do
   # kirjoitetaan frekvenssi ja sana tiedostoon "tarkeetfq"
   cat ${1}/tmp/tmp2 | sort -nr | head -n $VAR > ${1}/"$i"/tarkeetfq
 
-  # poistetaan frekvenssiluku sanojen edestä 
+  # poistetaan frekvenssiluku sanojen edestä: 
+  #  sed jättää vain /2 argumentin eli sanan itset  
   # kirjoitetaan tärkeimmät erilaiset sanat tiedostoon "tarkeet"
   sed 's/\(.*\) \(.*\)/\2/g' ${1}/"$i"/tarkeetfq > ${1}/"$i"/tarkeet 
 
-  # otetaan korkeintaan 8:n numeron kentästä kaikki frekvenssit talteen
+  # otetaan korkeintaan 8:n numeron kentästä kaikki frekvenssit talteen 
+  #  jokainen omalle rivilleen (-o optio)
   # kirjoitetaan frekvenssit tiedostoon "frekvenssit" 
   egrep -o '[0-9]{1,8}' ${1}/"$i"/tarkeetfq > ${1}/"$i"/frekvenssit 
 
-  # summataan sanafrekvenssit rivi riviltä 
+  # summataan sanafrekvenssit rivi riviltä muuttujaan s 
   # kirjoitetaan kokonaisfrekvenssi tiedostoon "frekvenssi"
   awk '{s+=$1} END {print s}' ${1}/"$i"/frekvenssit > ${1}/"$i"/frekvenssi 
 
   # lasketaan lokaali sanapeittävyys 
   # tiedosto "../data/lkmsana" sisältää kaikki esimerkkitiedoston sanat
-  # TODO selitä tarkemmin mitä sed ja awk tekevät
+  # tr poistaa rivivälin, set lisää välilyönnin numeroiden välille  
+  # awk printtaa liukuluvun neljän numeron kenttään: tarvitaan 0 lukutyyppimuunnosta varten
   cp ${1}/"$i"/frekvenssi ${1}/"$i"/tmpfrekvenssi  
   cat ${1}/data/lkmsana >> ${1}/"$i"/tmpfrekvenssi 
   tr "\n" " " < ${1}/"$i"/tmpfrekvenssi | sed 's/[ \t]*$//' > ${1}/"$i"/tmppeitto
@@ -46,13 +49,17 @@ do
   mkdir ${1}/$i/harj/
   for j in {a..z} å ä ö 
   do
-    # järjestetään aakkoselliseen järjestykseen  
+    # järjestetään aakkoselliseen järjestykseen (i= ignore case) 
     grep -i "^$j" ${1}/"$i"/tarkeet | sort > ${1}/"$i"/tmp$j 
+
     # harjoitukset omaa alihakemistoon 
-    sed 's/$/,/' ${1}/$i/tmp$j | tr "\n" " " | sed 's/[ \t]*$//' | sed '$s/,$//' > ${1}/$i/harj/$j.txt 
+    # tr poistaa rivinvaihdot, sed lisää tyhjätilan sanojen väliin
+    sed 's/$//' ${1}/$i/tmp$j | tr "\n" " " | sed 's/[ \t]*$//' | sed '$s/$//' > ${1}/$i/harj/$j.txt 
+
     # kirjainkohtaiset merkkimäärät: mukana tyhjätilat ja pilkut 
     echo "$j" > ${1}/"$i"/tmp"$j"char
     cp ${1}/"$i"/harj/$j.txt ${1}/tmp/tmpchars
+
     # multibyte huomioitu wc -m optiolla ja 
     # TODO sed jälkeen vähennetään rivin lopusta whitespace jos rivillä kirjaimia awk '{print $1-1}' 
     wc -m ${1}/tmp/tmpchars | sed "s|${1}/tmp/tmpchars||g" >> ${1}/"$i"/tmp"$j"char
@@ -71,8 +78,10 @@ do
     cp ${1}/"$i"/merkkimaara ${1}/"$i"/tmpmerkkimaara
     cat ref/"$k" >> ${1}/"$i"/tmpmerkkimaara
     tr "\n" " " < ${1}/"$i"/tmpmerkkimaara | sed 's/[ \t]*$//' > ${1}/"$i"/tmpaikalasku
+
     #cat ${1}/"$i"/tmpaikalasku
     awk '{ printf "%4f", ($1 + 0) / ($2 + 0) }' ${1}/"$i"/tmpaikalasku > ${1}/"$i"/aika$k
+
     # kerätään yhteen filuun "nopeusjaaika" kahteen sarakkeeseen nopeus aika 
     cat ref/"$k" > ${1}/"$i"/tmpajat
     cat ${1}/"$i"/aika$k >> ${1}/"$i"/tmpajat
@@ -82,6 +91,6 @@ do
   #sort -n ${1}/"$i"/nopeusjaaika -o ${1}/"$i"/nopeusjaaika
 
   # poistetaan väliaikaiset tiedostot 
-  rm -r ${1}/"$i"/tmp* 
+   rm -r ${1}/"$i"/tmp* 
 
 done 
