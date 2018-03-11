@@ -1,6 +1,9 @@
 # touchminer
 A Command-line program for creating optimal touch typing exercises from ebook data.
 
+**10.3.2018**
+-kloonattiin omalle koneelle, testataan toimivuus WLS-ympäristössä 
+
 **versio 0.71 2018/3/5**
 -Moved the project to Github
 -Checked the log below and corrected some typos 
