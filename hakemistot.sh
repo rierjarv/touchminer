@@ -37,10 +37,9 @@
   # u*/                    == hakemisto, jossa analysoitu kolmen kirjaimen tavuja
   # ../ref/*               == apudataa mm kirjoitusnopeudet mrk/min
   # ../python/*            == python-plottauskoodit päähakemistossa
-  # ../test/*              == testataan uusia juttuja ennen sijoittamista varsinaiseen koodiin 
 # 
 
-# TODO tarkista että käyttäjä antanut täsmälleen 2 argumenttia, jos ei niin älä suorita ohjelmaa + virheilmoitus
+# TODO tarkista että käyttäjä antanut täsmälleen 2 argumenttia, jos ei niin älä suorita ohjelmaa ja anna virheilmoitus
 # TODO check if directory exists then rm -r directory and echo "luodaan uusi hakemisto [hakemiston nimi]"
 # TODO kysy jos olemassa niin overwrite directory k/e
 

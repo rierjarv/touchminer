@@ -4,25 +4,39 @@
 # sanat, erilaiset sanat ja merkit + tmp1/tmp2-filut 
 #
 # 2015/1/25
-# 1$ lähdetekstitiedosto
-# 2$ projektinNimi
+# $1 lähdetekstitiedosto
+# $2 projektinNimi
 
-# tmp/tmp1 sis. kaikki sanat ja poistaa 1 merkkiä pitkät sanat 
+# TIEDON LUKEMINEN # luetaan data lähdetekstitiedostosta $1
+# poistaa ylimääräiset tyhjätilamerkit   
+# muuttaa kaikki kirjaimet pieniksi
+# järjestää aakkosjärjestykseen allekkain 
+# poistaa 1 merkkiä pitkät sanat 
+# poistaa tyhjätilamerkit jokaiselta riviltä
+# tallentaa tiedostoon tmp/tmp1
 tr -cs "[:alpha:]" "\n"  < $1  | tr '[:upper:]' '[:lower:]' | sort | awk 'length>1' | tr -d ' '  > ${2}/tmp/tmp1
 
 
-#
 # SANAT 
-#
+
+# kaikki sanat tiedostosta tmp/tmp1 lukumäärällä varustettuna riveittäin tiedostoon tmp/tmp2
 # tmp/tmp2 sis. kaikki erilaiset sanat ja numero edessä
 uniq -c ${2}/tmp/tmp1 > ${2}/tmp/tmp2 
+
+# laskee rivien lukumäärän tiedostossa tmp/tmp1 eli sanojen lukumäärän
+# poistaa sanan jokaiselta riviltä
+# poistaa tyhjätilat jokaiselta riviltä
 # kaikkien sanojen lkm
 wc -l ${2}/tmp/tmp1 | sed "s|${2}/tmp/tmp1||g" | tr -d ' ' > ${2}/data/lkmsana
+
 # rivien lukumäärä muuttujaan
+# kirjoitetaan awk:lle ja annetaan arvo muuttujalle
 VARI=$( cat ${2}/data/lkmsana | awk '{print $1}' )
+
 # merkkien lkm, huomioitu multibyte sekä vähennetty newlinet 
 wc -m ${2}/tmp/tmp1 | sed "s|${2}/tmp/tmp1||g" | awk '{print $1-var}' var="$VARI" | tr -d ' ' > ${2}/data/lkmmerkki
-# erilaiset sanat
+
+# erilaisten sanojen lukumäärä, vrt. aiempi komento wc -l edellä
 wc -l ${2}/tmp/tmp2 | sed "s|${2}/tmp/tmp2||g" | tr -d ' ' > ${2}/data/lkmerisana
 
 
