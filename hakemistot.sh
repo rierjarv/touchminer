@@ -4,7 +4,7 @@
 # luo tarvittavat hakemistot 
 # lista hakemistoista, tiedostoista yms. ja niiden sisällöistä
 #
-# 2015/1/25
+# 2018/3/11
 # 1$ lähdetekstitiedosto
 # 2$ projektinNimi
 
@@ -12,7 +12,7 @@
 # GLOBAALIT HAKEMISTOT ${2}/ alla 
 #
   # tmp/*                  == globaalit väliaikaiset filut, pois lopuksi
-  # data/*                 == data-analyysi josta plotit  
+  # data/*                 == data-analyysi, josta plotit  
     # data/frekvenssi      == tärkeiden sanojen frekvenssit / osuus havaituista sanoista 
     # data/frekvenssi2tavu == tärkeiden 2-tavujen frekvenssit / osuus havaituista sanoista 
     # data/frekvenssi3tavu == tärkeiden 3-tavujen frekvenssit / osuus havaituista sanoista 

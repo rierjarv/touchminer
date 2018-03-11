@@ -1,15 +1,16 @@
 #!/bin/bash 
 
-# TOUCHMINER touchminer.sh
-# käynnistää ohjelman toiminnot  
 #
-# v. 0.62 2015/1/3
+# TOUCHMINER touchminer.sh
+# @author Riku E. Järvinen
+# käynnistää ohjelman toiminnot  
+# v. 0.62 2018/3/11
+#
+
+
+# luodaan projektin hakemistot komentoriviargumenteista
 # 1$ lähdetekstitiedosto
 # 2$ projektinNimi
-
-
-
-# luodaan projektin hakemistot
 ./hakemistot.sh $1 $2 
 
 # lasketaan sanat & merkit ja erilaiset sanat + luodaan tmp1/tmp2-filut 
@@ -38,14 +39,11 @@
 rm -r ${2}/tmp/
 
 #
-# FUTURE kehitys
+# kehitys
 # 
 
-# TODO sana+sana eli lyhyet ilmaukset (future) 
-
-# TODO rytmiikka-analyysi ja siihen liittyvät jutut (future) 
-
-# TODO tavut sanojen lopusta ja harjoittelu lyhyillä sanoilla (future) 
+# TODO sana+sana eli lyhyet ilmaukset 
+# TODO rytmiikka-analyysi ja siihen liittyvät jutut 
+# TODO tavut sanojen lopusta ja harjoittelu lyhyillä sanoilla
 # TODO edellisen yhdistäminen tavuharjoituksiin? 
-
-# TODO kirjainten esittely vähän kerrallaan ja harjoitusten rakentaminen sitä kautta? (future)
+# TODO kirjainten esittely vähän kerrallaan ja harjoitusten rakentaminen sitä kautta? 
