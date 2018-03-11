@@ -14,7 +14,7 @@
 # poistaa 1 merkkiä pitkät sanat 
 # poistaa tyhjätilamerkit jokaiselta riviltä
 # tallentaa tiedostoon tmp/tmp1
-tr -cs "[:alpha:]" "\n"  < $1  | tr '[:upper:]' '[:lower:]' | sort | awk 'length>1' | tr -d ' '  > ${2}/tmp/tmp1
+tr -cs "a-zA-ZåäöÅÄÖ" "\n"  < $1  | tr '[:upper:]' '[:lower:]' | sort | awk 'length>1' | tr -d ' '  > ${2}/tmp/tmp1
 
 
 # SANAT 
