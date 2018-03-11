@@ -56,7 +56,7 @@ do
     # tr poistaa rivinvaihdot, sed lisää tyhjätilan sanojen väliin
     sed 's/$//' ${1}/$i/tmp$j | tr "\n" " " | sed 's/[ \t]*$//' | sed '$s/$//' > ${1}/$i/harj/$j.txt 
 
-    # kirjainkohtaiset merkkimäärät: mukana tyhjätilat ja pilkut 
+    # kirjainkohtaiset merkkimäärät: mukana tyhjätilat 
     echo "$j" > ${1}/"$i"/tmp"$j"char
     cp ${1}/"$i"/harj/$j.txt ${1}/tmp/tmpchars
 
@@ -71,7 +71,7 @@ do
   awk '{s+=$1} END {print s}' ${1}/"$i"/tmpmerkit > ${1}/"$i"/merkkimaara
   #cat ${1}/"$i"/merkkimaara
 
-  # sanaharjoitusten lokaali aika-arvio 
+  # AIKA-ARVIO SANAHARJOITUKSILLE, LOKAALI
   # aika = merkkimaara/nopeus (min) ilman taukoja
   for k in n80 n100 n120 n150 n200 n250 n300 n400 
   do 
