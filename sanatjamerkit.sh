@@ -9,12 +9,13 @@
 
 # TIEDON LUKEMINEN # luetaan data lähdetekstitiedostosta $1
 # poistaa ylimääräiset tyhjätilamerkit   
-# muuttaa kaikki kirjaimet pieniksi
+# muuttaa kaikki kirjaimet pieniksi (sed toimii skandien kanssa toisin kuin tr)
 # järjestää aakkosjärjestykseen allekkain 
 # poistaa 1 merkkiä pitkät sanat 
 # poistaa tyhjätilamerkit jokaiselta riviltä
 # tallentaa tiedostoon tmp/tmp1
-tr -cs "a-zA-ZåäöÅÄÖ" "\n"  < $1  | tr '[:upper:]' '[:lower:]' | sort | awk 'length>1' | tr -d ' '  > ${2}/tmp/tmp1
+# tr '[:upper:]' '[:lower:]' TODO tämä aiemmin sed:n paikalla 
+tr -cs "a-zA-ZåäöÅÄÖ" "\n"  < $1  | sed "s|[[:upper:]]*|\L|g" | sort | awk 'length>1' | tr -d ' '  > ${2}/tmp/tmp1
 
 
 # SANAT 
