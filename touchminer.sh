@@ -1,16 +1,22 @@
 #!/bin/bash 
 
 #
-# TOUCHMINER touchminer.sh
+#
+# TOUCHMINER
+#
+# Sovellus luo optimaaliset kymmensormitekniikan harjoitukset perustuen
+# sille parametreina annettuun tekstitiedostoon $1. Harjoitukset ja niihin
+# liittyvä muu data kirjoitetaan hakemistoon $2.
+#
+# 1$ lähdetekstitiedosto
+# 2$ projektinNimi (hakemisto)
+#
 # @author Riku E. Järvinen
-# käynnistää ohjelman toiminnot  
-# v. 0.62 2018/3/11
+# 2015-2018
 #
 #
 
 # luodaan projektin hakemistot komentoriviargumenteista
-# 1$ lähdetekstitiedosto
-# 2$ projektinNimi
 ./hakemistot.sh $1 $2 
 
 # lasketaan sanat & merkit ja erilaiset sanat + luodaan tmp1/tmp2-filut 
