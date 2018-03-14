@@ -6,7 +6,7 @@
 # käynnistää ohjelman toiminnot  
 # v. 0.62 2018/3/11
 #
-
+#
 
 # luodaan projektin hakemistot komentoriviargumenteista
 # 1$ lähdetekstitiedosto
