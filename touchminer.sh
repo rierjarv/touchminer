@@ -1,7 +1,7 @@
 #!/bin/bash 
 
 #
-# TOUCHMINER touchminer.sh
+# TOUCHMINER 
 # @author Riku E. Järvinen
 # käynnistää ohjelman toiminnot  
 # 2018/3/11
