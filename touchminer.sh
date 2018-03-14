@@ -1,11 +1,9 @@
 #!/bin/bash 
 
 #
-# TOUCHMINER touchminer.sh
+# TOUCHMINER 
 # @author Riku E. Järvinen
 # käynnistää ohjelman toiminnot  
-# v. 0.62 2018/3/11
-#
 #
 
 # luodaan projektin hakemistot komentoriviargumenteista
