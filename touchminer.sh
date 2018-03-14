@@ -36,6 +36,7 @@
 #./raportti.sh 
 
 # poistetaan väliaikaiset tiedostot
+# HUOM ohjelman toimivuutta voidaan testata kommentoimalla allaoleva rivi
  rm -r ${2}/tmp/
 
 #
