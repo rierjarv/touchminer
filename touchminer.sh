@@ -27,6 +27,7 @@
 
 # kokoavat dataoperaatiot mm. jakauma, frekvenssi, aika-arvio yms.  
 # kokoavat tavuoperaatiot 
+# TODO tämä liittyy myöhempiin tiedostoihin, tarkista että pelaa kuten pitää
 ./kokoavatoperaatiot.sh $2
 
 # TODO plottaus 
