@@ -23,7 +23,7 @@
 # lasketaan sanat & merkit ja erilaiset sanat + luodaan tmp1/tmp2-filut 
 ./sanatjamerkit.sh $1 $2 
 
-# sanaharjoitukset + sanadata
+# sanaharjoitukset + sanadata HUOM vielä tarpeellisia muutoksia tehtävä?
 ./sanaharj.sh $2
 
 # tavu 2-harjoitukset + tavu2-data

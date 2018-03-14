@@ -1,6 +1,6 @@
 #!/bin/bash 
 
-# TOUCHMINER sanatjamerkit.sh
+# sanatjamerkit.sh
 # sanat, erilaiset sanat ja merkit + tmp1/tmp2-filut 
 #
 # 2018/3/11
