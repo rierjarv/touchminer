@@ -1,6 +1,12 @@
 # touchminer
 A Command-line program for creating optimal touch typing exercises from ebook data.
 
+**14.3.2018**
+-korjattiin virhe tr -> sed tiedostossa sanatjamerkit.sh 
+-kirjoitettu kommentteihin tarkennuksia 
+-muutamia tyhmiä committeja: harjoittelen Git:n käyttöä samalla
+ kun teen projektia
+
 **10.3.2018**
 -kloonattiin omalle koneelle, testataan toimivuus WLS-ympäristössä 
 
