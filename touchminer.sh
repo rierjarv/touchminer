@@ -1,7 +1,7 @@
 #!/bin/bash 
 
 #
-#
+###########################################################################
 # TOUCHMINER
 #
 # Sovellus luo optimaaliset kymmensormitekniikan harjoitukset perustuen
@@ -14,6 +14,7 @@
 # @author Riku E. Järvinen
 # 2015-2018
 #
+###########################################################################
 #
 
 # luodaan projektin hakemistot komentoriviargumenteista
